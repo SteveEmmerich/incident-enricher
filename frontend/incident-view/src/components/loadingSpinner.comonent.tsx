@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { IonLoading } from '@ionic/react';
-import { IncidentContext } from '../services/api.service';
+import { useIncidentState } from '../services/incident.provider';
 
 export const ShowLoading = () => {
-  const { loading } = useContext(IncidentContext);
+  const { loading } = useIncidentState();
   return <IonLoading isOpen={loading} message={'Loading...'} />;
 };
