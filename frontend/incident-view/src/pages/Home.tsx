@@ -5,13 +5,15 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import React, { useContext } from 'react';
+import React from 'react';
 import IncidentMap from '../components/incidentMap.component';
-import { IncidentContext } from '../services/api.service';
+import { useIncidentState, IncidentState } from '../services/incident.provider';
 
 const Home: React.FC = () => {
-  const { selectedIncident } = useContext(IncidentContext);
-  const { latitude, longitude } = selectedIncident.address;
+  const incidentState = useIncidentState();
+  // TODO: Fix the Map component to use the state instead of props
+  const latitude = incidentState.selectedIncident.address?.latitude;
+  const longitude = incidentState.selectedIncident.address?.longitude;
   return (
     <IonPage>
       <IonHeader>
