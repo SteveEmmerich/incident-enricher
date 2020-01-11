@@ -14,3 +14,6 @@ Stack:
 - Koa2
 - Jest
 - Typescript
+
+Milestone 1 met. Basic backend at end of second hour.
+Milestone 2 . Basic frontend. at end of fourth hour.
