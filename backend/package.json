@@ -1,0 +1,37 @@
+{
+  "name": "incident-tracker-be",
+  "version": "1.0.0",
+  "description": "Incident tracking and enrichment",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rm -rf dist && tsc",
+    "dev": "tsc-watch --onSuccess 'node --inspect=0.0.0.0:3000 dist/src/index.js'",
+    "start": "node dist/src/index.js"
+  },
+  "author": "Steve Emmerich (Dev Dad)",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-router": "^7.4.0",
+    "@types/node": "^13.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "husky": "^4.0.6",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "tsc-watch": "^4.0.0",
+    "typescript": "^3.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
