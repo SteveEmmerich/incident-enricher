@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { IncidentProvider } from './services/api.service';
+import { IncidentProvider } from './services/incident.provider';
 
 const App: React.FC = () => (
   <IncidentProvider>
