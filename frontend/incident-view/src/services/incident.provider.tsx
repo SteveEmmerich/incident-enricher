@@ -32,10 +32,13 @@ const IncidentProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log('fetching');
       setLoading(true);
       //TODO: This should be an ENV Var
-      const incidents = await axios('http://localhost:3000');
-      setData(incidents);
+      const incidents = await axios('http://localhost:3001/incidents');
+      console.log(`data: ${JSON.stringify(incidents.data)}`);
+      setData(incidents.data);
+      setSelectedIncident(incidents.data[0]);
       setLoading(false);
     };
     fetchData();

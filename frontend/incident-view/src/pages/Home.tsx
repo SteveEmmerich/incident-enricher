@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import IncidentMap from '../components/incidentMap.component';
 import { useIncidentState, IncidentState } from '../services/incident.provider';
-
+import IncidentList from '../components/incidentList.component';
 const Home: React.FC = () => {
   const incidentState = useIncidentState();
   // TODO: Fix the Map component to use the state instead of props
@@ -23,17 +23,7 @@ const Home: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IncidentMap latitude={latitude} longitude={longitude} />
-        <p>
-          If you get lost, the{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://ionicframework.com/docs/"
-          >
-            docs
-          </a>{' '}
-          will be your guide.
-        </p>
+        <IncidentList></IncidentList>
       </IonContent>
     </IonPage>
   );
