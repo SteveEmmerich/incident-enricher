@@ -10,12 +10,11 @@ export const fetchWeather = async (incidentData: Partial<Address>) => {
 
   try {
     // TODO: Change this to ensure the day requested matches the incident
-    /*const weatherData = await fetch(
+    const weatherData = await fetch(
       `${weatherAPIURL}/${weatherAPIKey}/${latitude},${longitude}`
     );
 
-    return weatherData.json();*/
-    return null;
+    return weatherData.json();
   } catch (e) {
     console.log(` error during fetch ${e}`);
     throw e;

@@ -6,7 +6,7 @@ import axios from 'axios';
 type Props = { children: React.ReactNode };
 export type IncidentState = {
   loading: boolean;
-  data: any /*this should be filled out with our back end types */;
+  data: any[] /*this should be filled out with our back end types */;
   selectedIncident: {
     address?: {
       latitude: number;
@@ -26,7 +26,7 @@ const IncidentContext = createContext<IncidentState | undefined>({
 });
 
 const IncidentProvider = ({ children }: Props) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedIncident, setSelectedIncident] = useState({});
 

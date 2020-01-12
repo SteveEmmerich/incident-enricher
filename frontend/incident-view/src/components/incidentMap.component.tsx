@@ -7,7 +7,7 @@ const MapsApiKey = `AIzaSyALuawajpAZybTMArJwWB6SPJKCSgLnUC8`;
 
 // TODO: Move this, maybe styled components?
 const mapStyles = {
-  width: '50%',
+  width: '100%',
   height: '100%',
 };
 
@@ -36,7 +36,7 @@ class MapContainer extends React.Component<Props> {
         containerStyle={mapStyles}
         google={this.props.google}
         zoom={8}
-        initialCenter={{ lat: latitude, lng: longitude }}
+        center={{ lat: latitude, lng: longitude }}
       >
         <Marker position={{ lat: latitude, lng: longitude }} />
       </Map>

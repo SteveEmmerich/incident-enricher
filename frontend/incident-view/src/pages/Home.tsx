@@ -4,10 +4,14 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/react';
 import React from 'react';
 import IncidentMap from '../components/incidentMap.component';
-import { useIncidentState, IncidentState } from '../services/incident.provider';
+import { useIncidentState } from '../services/incident.provider';
+import { ShowLoading } from '../components/loadingSpinner.component';
 import IncidentList from '../components/incidentList.component';
 const Home: React.FC = () => {
   const incidentState = useIncidentState();
@@ -21,9 +25,18 @@ const Home: React.FC = () => {
           <IonTitle>Ionic Blank</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IncidentMap latitude={latitude} longitude={longitude} />
-        <IncidentList></IncidentList>
+      <IonContent className="ion-padding" fullscreen>
+        <ShowLoading></ShowLoading>
+        <IonGrid style={{ height: '100%' }}>
+          <IonRow style={{ height: '100%' }}>
+            <IonCol size="6">
+              <IncidentMap latitude={latitude} longitude={longitude} />
+            </IonCol>
+            <IonCol size="6">
+              <IncidentList></IncidentList>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

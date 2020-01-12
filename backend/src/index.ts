@@ -4,7 +4,8 @@ import * as Logger from 'koa-logger';
 import * as Cors from '@koa/cors';
 
 import { initData, fetchWeather } from './commands';
-import { Incidnet } from './models/incident.model';
+import { Incident } from './models/incident.model';
+import * as uuid from 'uuid/v4';
 
 const initApp = async port => {
   // Initial data load. Not fancy and could be improved
@@ -12,9 +13,10 @@ const initApp = async port => {
   try {
     const incidentData = await initData();
     mappedIncidentData = await Promise.all(
-      incidentData.map(async (incident: Incidnet) => {
+      incidentData.map(async (incident: Incident) => {
         const incidentWeather = await fetchWeather(incident.address);
-        return { ...incident, weather: incidentWeather };
+        const id = uuid();
+        return { id, ...incident, weather: incidentWeather };
       })
     );
   } catch (e) {

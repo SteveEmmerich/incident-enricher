@@ -1,5 +1,3 @@
-//TODO: Share these better across front and back end
-
 export interface Address {
   address_id: string;
   address_line1: string;
