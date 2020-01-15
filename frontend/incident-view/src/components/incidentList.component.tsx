@@ -9,6 +9,7 @@ type ItemProps = {
   children: React.ReactNode;
   setSelectedIncident: Function | undefined;
   incident: any;
+  color: any;
 };
 
 // Component to render items
@@ -16,13 +17,17 @@ const IncidentItem: React.FC<ItemProps> = ({
   children,
   setSelectedIncident,
   incident,
+  color,
 }: ItemProps) => {
-  const onClick = (_incident: any) => {
+  const onClick = (_incident: any) => () => {
     const fn = setSelectedIncident ? setSelectedIncident : () => {};
-
     return fn(_incident);
   };
-  return <IonItem onClick={onClick(incident)}>{children}</IonItem>;
+  return (
+    <IonItem color={color} onClick={onClick(incident)}>
+      {children}
+    </IonItem>
+  );
 };
 
 // Component to render list
@@ -30,12 +35,15 @@ const IncidentList = () => {
   const state = useIncidentState();
   const data: any[] = state.data as any[];
   const setSelectedIncident = state.setSelectedIncident;
-
+  useEffect(() => {
+    console.log(state.selectedIncident);
+  }, [state.selectedIncident]);
   const listItems = data?.map((incident: Incident) => (
     <IncidentItem
       key={incident.id}
       incident={incident}
       setSelectedIncident={setSelectedIncident}
+      color={incident.id === state.selectedIncident.id ? 'warning' : 'primary'}
     >
       <IonLabel>{incident.description.comments}</IonLabel>
     </IncidentItem>

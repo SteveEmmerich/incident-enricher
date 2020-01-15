@@ -8,6 +8,7 @@ export type IncidentState = {
   loading: boolean;
   data: any[] /*this should be filled out with our back end types */;
   selectedIncident: {
+    id?: string;
     address?: {
       latitude: number;
       longitude: number;
